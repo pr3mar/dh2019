@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Container, Row, Col  } from 'react-bootstrap';
 
-import RegionStats from './components/RegionStats'
+import RegionStats from './components/RegionStats';
+import BasicMap from './components/BasicMap';
 
-import { appData } from './assets/data.js'
+import { appData } from './assets/data.js';
 import './App.css';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -24,7 +25,7 @@ class App extends Component {
     if(Array.isArray(appData)){
       for (let i=0; i<appData.length; i++){
         regions.push(
-          <Col md="2">
+          <Col md="2" key={i}>
             <RegionStats regionsData={appData[i]} />
           </Col>
         )
@@ -46,6 +47,7 @@ class App extends Component {
             </Row>
           </Container>
         </div>
+        <BasicMap />
       </div>
     );
   }

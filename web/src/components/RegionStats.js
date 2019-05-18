@@ -10,7 +10,7 @@ class RegionStats extends Component {
 
     for (let i=0; i<numPods; i++){
       pods.push(
-        <div>
+        <div key={i}>
           <FontAwesomeIcon icon="square" />
         </div>
       )
