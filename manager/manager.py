@@ -2,6 +2,7 @@ import json
 
 import flask
 from flask import request, jsonify
+from scheduler import optimize
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
@@ -37,8 +38,7 @@ def demand_update():
     value = data["value"]
 
     regions[region]["demand"].append(value)
-
-    # TODO update scheduling
+    optimized = optimize([regions[region]["demand"][-1] for region in regions], 30, debug=True)
 
     return jsonify({"message": "demand added to {}".format(region)})
 

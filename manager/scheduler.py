@@ -8,9 +8,6 @@ def optimize(regionDemands, numServicesRunning, debug=True):
     :param numServicesRunning: 0 < numServices < 1000
     :return newState: [region1Running, region2Running, ...]
     """
-
-    # print([round(regionDemand/sum(regionDemands), 2) for regionDemand in regionDemands])
-    # print([1 - round(regionDemand/sum(regionDemands), 2) for regionDemand in regionDemands])
     if debug: print("region demands", regionDemands, "sum", sum(regionDemands))
     dataRange = max(regionDemands) - min(regionDemands) + 1
     optimized = [floor(numServicesRunning * ((1 - ((regionDemand - min(regionDemands))/dataRange)) * (1 - (regionDemand/sum(regionDemands))) / 2)) for regionDemand in regionDemands]
@@ -23,10 +20,3 @@ def optimize(regionDemands, numServicesRunning, debug=True):
             optimized[optimized.index(max(optimized))] += 1
     if debug: print("optimized", optimized, sum(optimized), sum(optimized) == numServicesRunning)
     return optimized
-    # return [round(numServicesRunning * (1 - (regionDemand/sum(regionDemands)))) for regionDemand in regionDemands]
-
-
-if __name__ == "__main__":
-    regionDemands = [40, 33, 90, 50, 10]
-    numServicesRunning = 30
-    optimized = optimize(regionDemands, numServicesRunning, debug=True)
