@@ -1,10 +1,34 @@
 import React, { Component } from 'react';
+import Clock from 'react-live-clock';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
 
 import Graph from './Graph'
 
 class RegionStats extends Component {
+  getPods = (numPods) => {
+    let pods = [];
+
+    for (let i=0; i<numPods; i++){
+      pods.push(
+        <div>
+          <FontAwesomeIcon icon="square" />
+        </div>
+      )
+    }
+
+    return pods;
+  }
+
   render() {
-    const {name} = this.props;
+    const {regionsData} = this.props;
+
+    let demand = [];
+    let demandLabel= [];
+
+    for(let i=0; i<regionsData.demand.length; i++){
+      demand.push(regionsData.demand[i]);
+      demandLabel.push(i);
+    }
 
     const graphOptions = {
       legend: {
@@ -12,18 +36,28 @@ class RegionStats extends Component {
       },
       scales: {
         xAxes: [{
-          type: 'time',
-          time: {
-            displayFormats: {
-              second: 'h:mm:ss'
-            }
+          display: false
+        }],
+        yAxes: [{
+          display: true,
+          ticks: {
+            suggestedMin: 0,
+            suggestedMax: 100,
           }
         }]
+      },
+      layout: {
+        padding: {
+          left: 10,
+          right: 20,
+          top: 20,
+          bottom: 10
+        }
       }
     };
 
     const initialState = {
-      labels: [new Date()-70000, new Date()-60000, new Date()-50000, new Date()-40000, new Date()-30000, new Date()-20000, new Date()-10000],
+      labels: demandLabel,
       datasets: [
         {
           label: 'My First dataset',
@@ -44,15 +78,26 @@ class RegionStats extends Component {
           pointHoverBorderWidth: 2,
           pointRadius: 1,
           pointHitRadius: 10,
-          data: [65, 59, 80, 81, 56, 55, 40],
+          data: demand,
         }
       ]
     };
 
     return(
       <div className="region-stats-cont">
-        {name}
+        <div className="city">{regionsData.region}</div>
         <Graph data={initialState} options={graphOptions}/>
+        <div className="time-cont">
+          <div className="clock">
+            <Clock format={'HH:mm:ss'} ticking={true} timezone={regionsData.timezone} />
+          </div>
+          <div>
+            <FontAwesomeIcon icon={regionsData.isDay ? "sun" : "moon"} />
+          </div>
+        </div>
+        <div className="pods">
+          {this.getPods(regionsData.pods)}
+        </div>
       </div>
     )
   }

@@ -1,10 +1,48 @@
 .App {
   text-align: center;
+  color: #444;
+}
+
+#regions-cont {
+  background: #444;
+  padding: 20px 0;
 }
 
 .region-stats-cont {
   background-color: #eee;
-  height: 20em;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.city {
+  font-size: x-large;
+}
+
+.time-cont {
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 10px 20px;
+  font-size: x-large;
+  color: #e3e3e3;
+  background: #444;
+
+}
+
+.time-cont .clock {
+  flex: 1;
+  text-align: left;
+}
+
+.pods {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 20px;
+  font-size: x-large;
+  height: 90px;
+}
+
+.pods > div {
+  margin: 0 3px;
 }
 
 /* Bootstrap override */

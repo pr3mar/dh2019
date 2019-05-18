@@ -11,7 +11,6 @@ const Graph = (props) => {
             : {}
         }
         options={props.options}
-
       />
     </div>
   )
