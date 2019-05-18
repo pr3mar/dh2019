@@ -1,0 +1,14 @@
+.App {
+  text-align: center;
+}
+
+.region-stats-cont {
+  background-color: #eee;
+  height: 20em;
+}
+
+/* Bootstrap override */
+
+#regions-cont .container {
+  max-width: 100%;
+}
