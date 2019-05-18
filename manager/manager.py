@@ -43,4 +43,4 @@ def demand_update():
     return jsonify({"message": "demand added to {}".format(region)})
 
 
-app.run()
+app.run(host='0.0.0.0')
