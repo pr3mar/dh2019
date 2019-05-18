@@ -1,7 +1,7 @@
 from math import floor
+from random import randint, random
 
-
-def optimize(regionDemands, numServicesRunning):
+def optimize(regionDemands, numServicesRunning, debug=True):
     """
     Function optimize,
     :param regionDemands: [demand1, demand2, demand3, ...]
@@ -11,20 +11,22 @@ def optimize(regionDemands, numServicesRunning):
 
     # print([round(regionDemand/sum(regionDemands), 2) for regionDemand in regionDemands])
     # print([1 - round(regionDemand/sum(regionDemands), 2) for regionDemand in regionDemands])
-    # todo: this is one possible solution
-    # ret = [floor(numServicesRunning * (1 - (regionDemand/sum(regionDemands))) / 2) for regionDemand in regionDemands]
-    inversePercents = [1.0/regionDemand for regionDemand in regionDemands]
-    inversePercents = [floor(numServicesRunning * inversePercent/sum(inversePercents)) for inversePercent in inversePercents]
-    for i in range(numServicesRunning - sum(inversePercents)):
-        inversePercents[inversePercents.index(max(inversePercents))] += 1
-
-    return inversePercents
+    if debug: print("region demands", regionDemands, "sum", sum(regionDemands))
+    dataRange = max(regionDemands) - min(regionDemands) + 1
+    optimized = [floor(numServicesRunning * ((1 - ((regionDemand - min(regionDemands))/dataRange)) * (1 - (regionDemand/sum(regionDemands))) / 2)) for regionDemand in regionDemands]
+    if debug: print("optimzed:", optimized, sum(optimized))
+    for i in range(numServicesRunning - sum(optimized)):
+        rand = random()
+        if rand < 0.25:
+            optimized[randint(0, len(optimized) - 1)] += 1
+        else:
+            optimized[optimized.index(max(optimized))] += 1
+    if debug: print("optimized", optimized, sum(optimized), sum(optimized) == numServicesRunning)
+    return optimized
     # return [round(numServicesRunning * (1 - (regionDemand/sum(regionDemands)))) for regionDemand in regionDemands]
 
 
 if __name__ == "__main__":
-    regionDemands = [5, 33, 60]
+    regionDemands = [40, 33, 90, 50, 10]
     numServicesRunning = 30
-    print(regionDemands, sum(regionDemands))
-    optimized = optimize(regionDemands, numServicesRunning)
-    print(optimized, sum(optimized), sum(optimized) == numServicesRunning)
+    optimized = optimize(regionDemands, numServicesRunning, debug=True)
