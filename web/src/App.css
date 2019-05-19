@@ -86,9 +86,13 @@
 }
 
 /* Animation */
-
+.region-stats-cont {
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+}
 .low-opacity {
-  opacity: 0.8;
+  opacity: 0.6;
+  transition: opacity 0.2s ease-in-out;
 }
 
 @keyframes blink {

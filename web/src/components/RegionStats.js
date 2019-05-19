@@ -77,7 +77,7 @@ class RegionStats extends Component {
 
     return(
       <div
-        className={regionsData.region!==this.props.highlight ? "region-stats-cont" : "region-stats-cont"}
+        className={this.props.highlight!=="" && regionsData.region!==this.props.highlight ? "region-stats-cont low-opacity" : "region-stats-cont"}
         onMouseOver={() => this.onRegionHover(regionsData.region)}
         onMouseOut={() => this.onRegionOut(regionsData.region)}
       >
