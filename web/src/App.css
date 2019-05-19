@@ -1,9 +1,15 @@
 .App {
-  position: absolute;
+  position: relative;
   text-align: center;
   color: #444;
-  top: 50%;
-  transform: translateY(-50%);
+  padding: 30px;
+}
+
+.infralink, .infralink:hover {
+  position: absolute;
+  top: 0;
+  right: 3px;
+  color: rgba(75,192,192,1);
 }
 
 #title {
@@ -72,7 +78,7 @@
   flex-wrap: wrap;
   padding: 3px 15px 10px;
   font-size: x-large;
-  min-height: 80px;
+  min-height: 100px;
   color: rgba(75,192,192,0.8);
 }
 
@@ -125,4 +131,9 @@
 
 #regions-cont .container {
   max-width: 100%;
+}
+
+.infra {
+  display: block;
+  margin: 0 auto;
 }
