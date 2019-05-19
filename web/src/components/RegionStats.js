@@ -100,6 +100,10 @@ class RegionStats extends Component {
         <div className="pods">
           {this.getPods(regionsData.actual_pods, regionsData.desired_pods)}
         </div>
+
+        <div className="company">
+          <img src={ "/assets/" + this.props.companyImg } alt="img" />
+        </div>
       </div>
     )
   }
