@@ -10,7 +10,7 @@ export const appData = [
   {
     region: "Bangalore",
     timezone: "Asia/Kolkata",
-    isDay: false,
+    isDay: true,
     demand: [65, 59, 80, 81, 56, 55, 40],
     pods: 11,
     coordinates: [77.5946, 12.9716]
@@ -33,7 +33,7 @@ export const appData = [
   },
   {
     region: "Frankfurt",
-    timezone: "US/Pacific",
+    timezone: "CET",
     isDay: true,
     demand: [65, 59, 80, 81, 56, 55, 40],
     pods: 5,

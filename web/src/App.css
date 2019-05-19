@@ -79,6 +79,11 @@
   background-color: rgba(75,192,192,0.25)
 }
 
+.pods > .small-circle {
+  transform: scale(0.7);
+  background-color: rgba(75,192,192,0)
+}
+
 /* Bootstrap override */
 
 #regions-cont .container {
