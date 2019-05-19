@@ -14,6 +14,20 @@ extensions_v1beta1 = client.ExtensionsV1beta1Api()
 
 regions = [
     {
+        "region": "Los Angeles",
+        "name": "eco-miner-usa",
+        "demand": [5, 3, 8, 5, 3, 2],
+        "desired_pods": 11,
+        "actual_pods": 11
+    },
+    {
+        "region": "Frankfurt",
+        "name": "eco-miner-ger",
+        "demand": [11, 10, 11, 9, 8, 7],
+        "desired_pods": 11,
+        "actual_pods": 11
+    },
+    {
         "region": "Ljubljana",
         "name": "eco-miner-slo",
         "demand": [2, 3, 4, 5, 9, 6],
@@ -28,23 +42,9 @@ regions = [
         "actual_pods": 7
     },
     {
-        "region": "Los Angeles",
-        "name": "eco-miner-usa",
-        "demand": [5, 3, 8, 5, 3, 2],
-        "desired_pods": 11,
-        "actual_pods": 11
-    },
-    {
         "region": "Nagasaki",
         "name": "eco-miner-jpn",
         "demand": [6, 7, 8, 9, 10, 9],
-        "desired_pods": 11,
-        "actual_pods": 11
-    },
-    {
-        "region": "Frankfurt",
-        "name": "eco-miner-ger",
-        "demand": [11, 10, 11, 9, 8, 7],
         "desired_pods": 11,
         "actual_pods": 11
     }
