@@ -1,0 +1,29 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Issuer
+metadata:
+  name: letsencrypt-prod
+spec:
+  acme:
+    # Staging server: https://acme-staging-v02.api.letsencrypt.org/directory
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: webmaster@over-engineering-best-practices.com
+    # Name of a secret used to store the ACME account private key
+    privateKeySecretRef:
+      name: letsencrypt-prod
+    http01: {}
+---
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: oebp-crt
+spec:
+  secretName: oebp-tls
+  issuerRef:
+    name: letsencrypt-prod
+  commonName: api.over-engineering-best-practices.com
+  acme:
+    config:
+      - http01:
+          ingressClass: nginx
+        domains:
+          - api.over-engineering-best-practices.com
