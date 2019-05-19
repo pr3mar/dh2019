@@ -1,5 +1,5 @@
 import json
-
+from flask_cors import CORS, cross_origin
 import flask
 from flask import request, jsonify
 from scheduler import optimize
@@ -16,35 +16,35 @@ regions = [
     {
         "region": "Los Angeles",
         "name": "eco-miner-usa",
-        "demand": [5, 3, 8, 5, 3, 2],
+        "demand": [50, 40, 20, 12, 30, 20],
         "desired_pods": 11,
         "actual_pods": 11
     },
     {
         "region": "Frankfurt",
         "name": "eco-miner-ger",
-        "demand": [11, 10, 11, 9, 8, 7],
+        "demand": [50, 60, 70, 70, 70, 85],
         "desired_pods": 11,
         "actual_pods": 11
     },
     {
         "region": "Ljubljana",
         "name": "eco-miner-slo",
-        "demand": [2, 3, 4, 5, 9, 6],
+        "demand": [50, 60, 70, 80, 90, 85],
         "desired_pods": 5,
         "actual_pods": 5
     },
     {
         "region": "Bangalore",
         "name": "eco-miner-ind",
-        "demand": [5, 3, 8, 5, 5, 5],
+        "demand": [40, 30, 20, 40, 50, 50],
         "desired_pods": 7,
         "actual_pods": 7
     },
     {
         "region": "Nagasaki",
         "name": "eco-miner-jpn",
-        "demand": [6, 7, 8, 9, 10, 9],
+        "demand": [30, 40, 50, 40, 30, 30],
         "desired_pods": 11,
         "actual_pods": 11
     }
@@ -72,10 +72,11 @@ def get_deployments(label):
 
 
 @app.route('/', methods=['GET'])
+@cross_origin()
 def home():
     for region in regions:
         deployments = get_deployments("app=" + region["name"])
-        region["desired_pods"] = deployments.items[0].status.ready_replicas
+        region["actual_pods"] = deployments.items[0].status.ready_replicas
 
     return jsonify(regions)
 
@@ -95,7 +96,7 @@ def demand_update():
         optimized = optimize([region["demand"][-1] for region in regions], 30, debug=True)
 
         for i, region in enumerate(regions):
-            region["actual_pods"] = optimized[i]
+            region["desired_pods"] = optimized[i]
             deployment = get_deployment(region["name"])
             update_deployment(deployment, region["name"], optimized[i])
 
