@@ -79,13 +79,27 @@ class App extends Component {
 
   getRegions = () => {
     const { apiData } = this.state;
+    const imgs = [
+      "google_cloud.svg",
+      "alibabacloud.svg",
+      "garaza.svg",
+      "microsoft_azure.svg",
+      "digitalocean.svg",
+      "microsoft_azure.svg"
+
+    ]
 
     let regions = [];
     if(Array.isArray(apiData)){
       for (let i=0; i<apiData.length; i++){
         regions.push(
           <Col md="2" key={i}>
-            <RegionStats regionsData={apiData[i]} setHighlight={(region) => this.setHighlight(region)} highlight={this.state.highlight} />
+            <RegionStats
+              regionsData={apiData[i]}
+              setHighlight={(region) => this.setHighlight(region)}
+              highlight={this.state.highlight}
+              companyImg={imgs[i]}
+            />
           </Col>
         )
       }
@@ -116,6 +130,7 @@ class App extends Component {
             <div>Info</div>
             <div>Power Demand</div>
             <div>Workload</div>
+            <div>Vendor</div>
           </div>
 
           <div id="regions-cont">

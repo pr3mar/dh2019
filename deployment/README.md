@@ -9,8 +9,8 @@
 * SSH users
 	* Gregor
 	* Aljaz
-* Label: eco-miner-slo
-* Node label: nodeName: slo
+* CPU: 4
+* Mem: 31.4GB
 
 ### India - Bangalore (node2)
 * Host: 159.65.147.255
@@ -18,8 +18,8 @@
 * Provider: Digital Ocean (Marko)
 * SSH users
 	* Gregor
-* Label: eco-miner-ind
-* Node label: nodeName: ind
+* CPU: 4
+* Mem: 7.8GB
 
 ### USA - LA (node3)
 * Host: 35.235.124.21
@@ -27,8 +27,8 @@
 * Provider GCP (Aljaz)
 * SSH users
 	* Gregor
-* Label: eco-miner-usa
-* Node label: nodeName: usa
+* CPU: 8
+* Mem: 7GB
 
 ### Japan - Nagasaki (node4)
 * IP: 40.74.79.47
@@ -37,8 +37,17 @@
 * SSH users
 	* Gregor
 	* Marko
-* Label: eco-miner-jpn
-* Node label: nodeName: jpn
+* CPU: 4
+* Mem: 7.7GB
+
+### South Africa - Cape Town (node5)
+* IP: 40.127.3.207
+* User: dh19
+* Provider: Azure (Marko)
+* SSH users
+    * Gregor
+* CPU: 2
+* Mem: 7.7GB
 
 ### Germany - Frankfurt (node6)
 * IP: 47.254.174.143
@@ -46,8 +55,8 @@
 * Provider: Alibaba Cloud (Marko)
 * SSH users
 	* Gregor
-* Label: eco-miner-ger
-* Node label: nodeName: ger
+* CPU: 2
+* Mem: 3.8GB
 
 ### Manager image
 * `https://hub.docker.com/r/as9697/manager`

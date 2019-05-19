@@ -100,4 +100,4 @@ ingress_nginx_namespace: "kube-system"
 
 # Cert manager deployment
 cert_manager_enabled: true
-# cert_manager_namespace: "cert-manager"
+cert_manager_namespace: "cert-manager"

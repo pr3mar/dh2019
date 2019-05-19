@@ -5,10 +5,15 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
+  tls:
+    - hosts:
+        - api.over-engineering-best-practices.com
+      secretName: oebp-tls
   rules:
-    - http:
-        paths:
-          - path: /
-            backend:
-              serviceName: manager-svc
-              servicePort: 80
+  - host: api.over-engineering-best-practices.com
+    http:
+      paths:
+        - path: /
+          backend:
+            serviceName: manager-svc
+            servicePort: 80
