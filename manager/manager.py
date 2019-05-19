@@ -17,40 +17,52 @@ regions = [
         "region": "Los Angeles",
         "name": "eco-miner-la",
         "demand": [2, 3, 4, 5, 9, 6],
-        "pods": 5,
+        "desired_pods": 5,
+        "actual_pods": 5
     },
     {
         "region": "London",
         "name": "eco-miner-lo",
         "demand": [5, 3, 8, 5, 5, 5],
-        "pods": 7
+        "desired_pods": 7,
+        "actual_pods": 7
     },
     {
         "region": "Tokyo",
         "name": "eco-miner-to",
         "demand": [5, 3, 8, 5, 3, 2],
-        "pods": 11
+        "desired_pods": 11,
+        "actual_pods": 11
     }
 ]
 
 
-def update_deployment(api_instance, deployment, name, n_replicas):
+def update_deployment(deployment, name, n_replicas):
     # Update container image
     deployment.spec.replicas = n_replicas
     # Update the deployment
-    api_response = api_instance.patch_namespaced_deployment(
+    api_response = extensions_v1beta1.patch_namespaced_deployment(
         name=name,
         namespace="default",
         body=deployment)
     print("Deployment updated. status={}, replica_count={}".format(api_response.status, n_replicas))
 
 
-def get_deployment(api_instance, name):
-    return api_instance.read_namespaced_deployment(name, namespace="default")
+def get_deployment(name):
+    return extensions_v1beta1.read_namespaced_deployment(name, namespace="default")
+
+
+def get_deployments(label):
+    api_response = extensions_v1beta1.list_namespaced_deployment(namespace="default", label_selector=label)
+    return api_response
 
 
 @app.route('/', methods=['GET'])
 def home():
+    for region in regions:
+        deployments = get_deployments("app=" + region["name"])
+        region["desired_pods"] = deployments.items[0].status.ready_replicas
+
     return jsonify(regions)
 
 
@@ -69,9 +81,9 @@ def demand_update():
         optimized = optimize([region["demand"][-1] for region in regions], 30, debug=True)
 
         for i, region in enumerate(regions):
-            region["pods"] = optimized[i]
-            deployment = get_deployment(extensions_v1beta1, region["name"])
-            update_deployment(extensions_v1beta1, deployment, region["name"], optimized[i])
+            region["actual_pods"] = optimized[i]
+            deployment = get_deployment(region["name"])
+            update_deployment(deployment, region["name"], optimized[i])
 
         return jsonify({"message": "demand added to {}".format(region)})
     except Exception as e:
