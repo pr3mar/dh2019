@@ -35,6 +35,13 @@ regions = [
         "actual_pods": 5
     },
     {
+        "region": "Cape Town",
+        "name": "eco-miner-sa",
+        "demand": [50, 40, 50, 50, 30, 65],
+        "desired_pods": 5,
+        "actual_pods": 5
+    },
+    {
         "region": "Bangalore",
         "name": "eco-miner-ind",
         "demand": [40, 30, 20, 40, 50, 50],
@@ -94,6 +101,7 @@ def demand_update():
         regions[region_id]["demand"].append(value)
 
         optimized = optimize([region["demand"][-1] for region in regions], 30, debug=True)
+        print(optimized)
 
         for i, region in enumerate(regions):
             region["desired_pods"] = optimized[i]
