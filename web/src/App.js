@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, Col  } from 'react-bootstrap';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
 
 import RegionStats from './components/RegionStats';
 import BasicMap from './components/BasicMap';
@@ -10,15 +11,19 @@ import './App.css';
 import { library } from '@fortawesome/fontawesome-svg-core';
 
 import {
-  faMoon, faSun, faStickyNote
+  faMoon, faSun, faStickyNote, faLeaf
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
-  faClone, faWindowMaximize
+  faClone, faWindowMaximize, faCircle, faSquare
 } from '@fortawesome/free-regular-svg-icons';
 
+import {
+  faBitcoin
+} from '@fortawesome/free-brands-svg-icons';
+
 library.add(
-  faMoon, faSun, faClone, faStickyNote, faWindowMaximize
+  faMoon, faSun, faClone, faStickyNote, faWindowMaximize, faLeaf, faCircle, faSquare
 );
 
 
@@ -41,15 +46,31 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-
-        <div id="regions-cont">
-          <Container>
-            <Row>
-              {this.getRegions()}
-            </Row>
-          </Container>
+        <div id="title">
+          <h1>
+            <span>Ec</span>
+            <FontAwesomeIcon id="logo-icon" icon="leaf" />
+            <span> Mining</span>
+          </h1>
+          <h5>Platform monitoring</h5>
         </div>
         <BasicMap />
+        <div id="stats-cont">
+          <div id="stats-header">
+            <div>Info</div>
+            <div>Power Demand</div>
+            <div>Workload</div>
+          </div>
+
+          <div id="regions-cont">
+            <Container>
+              <Row>
+                {this.getRegions()}
+              </Row>
+            </Container>
+          </div>
+        </div>
+
       </div>
     );
   }

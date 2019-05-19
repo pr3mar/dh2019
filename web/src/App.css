@@ -1,14 +1,46 @@
 .App {
+  position: relative;
   text-align: center;
   color: #444;
 }
 
-#regions-cont {
-  padding: 20px 0;
+#title {
+  position: absolute;
+  top: 430px;
+  left: 47px;
+  color: rgba(75,192,192,1);
 }
 
-.region-stats-cont {
+#logo-icon {
+  font-size: 0.6em;
+}
 
+#stats-cont {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+#stats-header {
+  text-align: right;
+  font-weight: bold;
+  padding-right: 35px;
+  border-right: 1px rgba(75,192,192,0.5) solid;
+}
+
+#stats-header > div:first-child{
+  margin-top: 38px;
+}
+
+#stats-header > div:nth-child(2){
+  margin-top: 70px;
+}
+
+#stats-header > div:nth-child(3){
+  margin-top: 68px;
+}
+
+#regions-cont {
+  padding: 20px 0;
 }
 
 .city {
@@ -29,15 +61,10 @@
   color: rgba(75,192,192,0.8);
 }
 
-.subtitle {
-  font-weight: bold;
-}
-
 .pods {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  padding: 3px 20px 10px;
+  padding: 3px 15px 10px;
   font-size: x-large;
   min-height: 80px;
   color: rgba(75,192,192,0.8);
@@ -45,6 +72,11 @@
 
 .pods > div {
   margin: 0 3px;
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  border: 2.5px rgba(75,192,192,1) solid;
+  background-color: rgba(75,192,192,0.25)
 }
 
 /* Bootstrap override */

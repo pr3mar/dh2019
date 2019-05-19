@@ -10,8 +10,7 @@ class RegionStats extends Component {
 
     for (let i=0; i<numPods; i++){
       pods.push(
-        <div key={i}>
-          <FontAwesomeIcon icon={["far", "window-maximize"]} />
+        <div key={i} className="circle">
         </div>
       )
     }
@@ -30,31 +29,37 @@ class RegionStats extends Component {
       demandLabel.push(i);
     }
 
-    const initialState = {
-      labels: demandLabel,
-      datasets: [
-        {
-          label: 'My First dataset',
-          fill: false,
-          lineTension: 0.1,
-          backgroundColor: 'rgba(75,192,192,0.4)',
-          borderColor: 'rgba(75,192,192,1)',
-          borderCapStyle: 'butt',
-          borderDash: [],
-          borderDashOffset: 0.0,
-          borderJoinStyle: 'miter',
-          pointBorderColor: 'rgba(75,192,192,1)',
-          pointBackgroundColor: '#fff',
-          pointBorderWidth: 1,
-          pointHoverRadius: 5,
-          pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-          pointHoverBorderColor: 'rgba(220,220,220,1)',
-          pointHoverBorderWidth: 2,
-          pointRadius: 1,
-          pointHitRadius: 10,
-          data: demand,
-        }
-      ]
+    const initialState = (canvas) => {
+      const ctx = canvas.getContext("2d");
+      const gradient = ctx.createLinearGradient(0, 0, 0, 100);
+      gradient.addColorStop(0, 'rgba(75,192,192,0.5)');
+      gradient.addColorStop(1, 'rgba(75,192,192,0.05)');
+
+      return {
+        labels: demandLabel,
+        datasets: [
+          {
+            label: 'Energy demand',
+            lineTension: 0.1,
+            backgroundColor: gradient,
+            borderColor: 'rgba(75,192,192,1)',
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: 'rgba(75,192,192,1)',
+            pointBackgroundColor: '#fff',
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+            pointHoverBorderColor: 'rgba(220,220,220,1)',
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            data: demand,
+          }
+        ]
+      }
     };
 
     return(
@@ -64,10 +69,8 @@ class RegionStats extends Component {
           <FontAwesomeIcon className="time-icon" icon={regionsData.isDay ? "sun" : "moon"} />
           <Clock format={'HH:mm:ss'} ticking={true} timezone={regionsData.timezone} />
         </div>
-        <div className="subtitle">Demand</div>
         <Graph data={initialState}/>
 
-        <div className="subtitle">Pods</div>
         <div className="pods">
           {this.getPods(regionsData.pods)}
         </div>
