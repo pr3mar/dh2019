@@ -4,7 +4,6 @@ metadata:
   name: eco-miner-jpn
   labels:
     app: eco-miner-jpn
-    nodeName: jpn
 spec:
   replicas: 1
   strategy:
@@ -23,3 +22,5 @@ spec:
         command: ["/bin/sh"]
         args: ["-c", "while true; do echo hello; sleep 10;done"]
       terminationGracePeriodSeconds: 0
+      nodeSelector:
+        kubernetes.io/hostname: node4

@@ -4,7 +4,7 @@
 dashboard_enabled: true
 
 # Helm deployment
-helm_enabled: false
+helm_enabled: true
 
 # Registry deployment
 registry_enabled: false
@@ -80,12 +80,14 @@ ingress_nginx_enabled: true
 ingress_nginx_host_network: true
 ingress_nginx_nodeselector:
   kubernetes.io/hostname: node1
-# ingress_nginx_tolerations:
+#  node-role.kubernetes.io/master: ""
+#ingress_nginx_nodeselector:
+  # ingress_nginx_tolerations:
 #   - key: "node-role.kubernetes.io/master"
 #     operator: "Equal"
 #     value: ""
 #     effect: "NoSchedule"
-# ingress_nginx_namespace: "ingress-nginx"
+ingress_nginx_namespace: "kube-system"
 # ingress_nginx_insecure_port: 80
 # ingress_nginx_secure_port: 443
 # ingress_nginx_configmap:
