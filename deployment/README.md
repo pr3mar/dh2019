@@ -38,3 +38,6 @@
 * Provider: Alibaba Cloud (Marko)
 * SSH users
 	* Gregor
+
+### Manager image
+* `https://hub.docker.com/r/as9697/manager`
