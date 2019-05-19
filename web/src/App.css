@@ -76,12 +76,14 @@
   height: 23px;
   border-radius: 50%;
   border: 2.5px rgba(75,192,192,1) solid;
-  background-color: rgba(75,192,192,0.25)
+  background-color: rgba(75,192,192,0.25);
+  transition: transform 0.5s ease-in-out;
 }
 
 .pods > .small-circle {
   transform: scale(0.7);
-  background-color: rgba(75,192,192,0)
+  background-color: rgba(75,192,192,0);
+  animation: fade-in 2s ease;
 }
 
 /* Bootstrap override */
