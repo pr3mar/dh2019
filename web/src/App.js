@@ -10,11 +10,15 @@ import './App.css';
 import { library } from '@fortawesome/fontawesome-svg-core';
 
 import {
-  faMoon, faSun, faSquare
+  faMoon, faSun, faStickyNote
 } from '@fortawesome/free-solid-svg-icons';
 
+import {
+  faClone, faWindowMaximize
+} from '@fortawesome/free-regular-svg-icons';
+
 library.add(
-  faMoon, faSun, faSquare
+  faMoon, faSun, faClone, faStickyNote, faWindowMaximize
 );
 
 
@@ -37,9 +41,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          Hello World
-        </header>
+
         <div id="regions-cont">
           <Container>
             <Row>

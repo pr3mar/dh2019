@@ -4,41 +4,43 @@
 }
 
 #regions-cont {
-  background: #444;
   padding: 20px 0;
 }
 
 .region-stats-cont {
-  background-color: #eee;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
 
 .city {
   font-size: x-large;
+  font-weight: bold;
 }
 
 .time-cont {
-  display: flex;
-  flex-wrap: nowrap;
-  padding: 10px 20px;
-  font-size: x-large;
-  color: #e3e3e3;
-  background: #444;
-
+  padding: 0 40px 17px 20px;
+  font-size: normal;
 }
 
-.time-cont .clock {
-  flex: 1;
-  text-align: left;
+.time-cont .time-icon {
+  position: relative;
+  top: 2px;
+  margin-right: 5px;
+  font-size: large;
+  color: rgba(75,192,192,0.8);
+}
+
+.subtitle {
+  font-weight: bold;
 }
 
 .pods {
   display: flex;
   flex-wrap: wrap;
-  padding: 10px 20px;
+  justify-content: center;
+  padding: 3px 20px 10px;
   font-size: x-large;
-  height: 80px;
+  min-height: 80px;
+  color: rgba(75,192,192,0.8);
 }
 
 .pods > div {

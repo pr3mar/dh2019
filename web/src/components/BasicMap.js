@@ -28,9 +28,11 @@ class BasicMap extends Component {
     }
     this.fetchCities = this.fetchCities.bind(this)
   }
+
   componentDidMount() {
     this.fetchCities()
   }
+
   fetchCities() {
     request
       .get("/assets/world-most-populous-cities.json")
@@ -39,6 +41,10 @@ class BasicMap extends Component {
           cities: res.data,
         })
       })
+  }
+
+  onMarkerHover(city) {
+    console.log(city.name);
   }
   render() {
     return (
@@ -92,9 +98,8 @@ class BasicMap extends Component {
                       cx={0}
                       cy={0}
                       r={cityScale(city.population)}
-                      fill="rgba(255,87,34,0.8)"
-                      stroke="#607D8B"
-                      strokeWidth="2"
+                      fill="rgba(75,192,192,0.8)"
+                      onMouseOver={() => this.onMarkerHover(city)}
                     />
                   </Marker>
                 ))

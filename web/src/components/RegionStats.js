@@ -11,7 +11,7 @@ class RegionStats extends Component {
     for (let i=0; i<numPods; i++){
       pods.push(
         <div key={i}>
-          <FontAwesomeIcon icon="square" />
+          <FontAwesomeIcon icon={["far", "window-maximize"]} />
         </div>
       )
     }
@@ -29,32 +29,6 @@ class RegionStats extends Component {
       demand.push(regionsData.demand[i]);
       demandLabel.push(i);
     }
-
-    const graphOptions = {
-      legend: {
-        display: false,
-      },
-      scales: {
-        xAxes: [{
-          display: false
-        }],
-        yAxes: [{
-          display: true,
-          ticks: {
-            suggestedMin: 0,
-            suggestedMax: 100,
-          }
-        }]
-      },
-      layout: {
-        padding: {
-          left: 10,
-          right: 20,
-          top: 20,
-          bottom: 10
-        }
-      }
-    };
 
     const initialState = {
       labels: demandLabel,
@@ -86,15 +60,14 @@ class RegionStats extends Component {
     return(
       <div className="region-stats-cont">
         <div className="city">{regionsData.region}</div>
-        <Graph data={initialState} options={graphOptions}/>
         <div className="time-cont">
-          <div className="clock">
-            <Clock format={'HH:mm:ss'} ticking={true} timezone={regionsData.timezone} />
-          </div>
-          <div>
-            <FontAwesomeIcon icon={regionsData.isDay ? "sun" : "moon"} />
-          </div>
+          <FontAwesomeIcon className="time-icon" icon={regionsData.isDay ? "sun" : "moon"} />
+          <Clock format={'HH:mm:ss'} ticking={true} timezone={regionsData.timezone} />
         </div>
+        <div className="subtitle">Demand</div>
+        <Graph data={initialState}/>
+
+        <div className="subtitle">Pods</div>
         <div className="pods">
           {this.getPods(regionsData.pods)}
         </div>
