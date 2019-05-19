@@ -40,11 +40,12 @@ export const appData = [
     coordinates: [8.6821, 50.1109]
   },
   {
-    region: "Frankfurt",
-    timezone: "US/Pacific",
+    region: "Cape Town",
+    timezone: "Africa/Maseru",
     isDay: true,
-    demand: [65, 59, 80, 81, 56, 55, 40],
+    demand: [65, 34, 13, 81, 56, 55, 40],
     pods: 5,
-    coordinates: [8.6821, 50.1109]
+    coordinates: [18.4241, -33.9249]
   },
+
 ]

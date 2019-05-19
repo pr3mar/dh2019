@@ -86,7 +86,7 @@ class RegionStats extends Component {
 
     return(
       <div
-        className={regionsData.region!==this.props.highlight ? "region-stats-cont" : "region-stats-cont"}
+        className={this.props.highlight!=="" && regionsData.region!==this.props.highlight ? "region-stats-cont low-opacity" : "region-stats-cont"}
         onMouseOver={() => this.onRegionHover(regionsData.region)}
         onMouseOut={() => this.onRegionOut(regionsData.region)}
       >
@@ -99,6 +99,10 @@ class RegionStats extends Component {
 
         <div className="pods">
           {this.getPods(regionsData.actual_pods, regionsData.desired_pods)}
+        </div>
+
+        <div className="company">
+          <img src={ "/assets/" + this.props.companyImg } alt="img" />
         </div>
       </div>
     )
