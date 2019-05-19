@@ -12,11 +12,20 @@ def optimize(regionDemands, numServicesRunning, debug=True):
     dataRange = max(regionDemands) - min(regionDemands) + 1
     optimized = [floor(numServicesRunning * ((1 - ((regionDemand - min(regionDemands))/dataRange)) * (1 - (regionDemand/sum(regionDemands))) / 2)) for regionDemand in regionDemands]
     if debug: print("optimzed:", optimized, sum(optimized))
-    for i in range(numServicesRunning - sum(optimized)):
-        rand = random()
-        if rand < 0.25:
-            optimized[randint(0, len(optimized) - 1)] += 1
-        else:
-            optimized[optimized.index(max(optimized))] += 1
+    if sum(optimized) < numServicesRunning:
+        while (numServicesRunning - sum(optimized)) != 0:
+            rand = random()
+            if rand < 0.25:
+                optimized[randint(0, len(optimized) - 1)] += 1
+            else:
+                optimized[optimized.index(max(optimized))] += 1
+    else:
+        while (sum(optimized) - numServicesRunning) != 0:
+            rand = random()
+            if rand < 0.25:
+                randInt = randint(0, len(optimized) - 1)
+                optimized[randInt] = optimized[randInt] - 1 if optimized[randInt] > 0 else 0
+            else:
+                optimized[optimized.index(max(optimized))] -= 1
     if debug: print("optimized", optimized, sum(optimized), sum(optimized) == numServicesRunning)
     return optimized
