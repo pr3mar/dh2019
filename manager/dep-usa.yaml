@@ -4,7 +4,7 @@ metadata:
   name: eco-miner-usa
   labels:
     app: eco-miner-usa
-    nodeName: to
+    nodeName: usa
 spec:
   replicas: 1
   strategy:

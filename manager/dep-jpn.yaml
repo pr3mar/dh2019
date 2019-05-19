@@ -4,7 +4,7 @@ metadata:
   name: eco-miner-jpn
   labels:
     app: eco-miner-jpn
-    nodeName: to
+    nodeName: jpn
 spec:
   replicas: 1
   strategy:
