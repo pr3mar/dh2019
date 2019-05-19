@@ -18,6 +18,19 @@ class RegionStats extends Component {
     return pods;
   }
 
+  onRegionHover(region) {
+    if(region!==this.props.highlight){
+      this.props.setHighlight(region)
+    }
+
+  }
+
+  onRegionOut(region) {
+    if(region===this.props.highlight){
+      this.props.setHighlight("")
+    }
+  }
+
   render() {
     const {regionsData} = this.props;
 
@@ -63,7 +76,11 @@ class RegionStats extends Component {
     };
 
     return(
-      <div className="region-stats-cont">
+      <div
+        className={regionsData.region!==this.props.highlight ? "region-stats-cont" : "region-stats-cont"}
+        onMouseOver={() => this.onRegionHover(regionsData.region)}
+        onMouseOut={() => this.onRegionOut(regionsData.region)}
+      >
         <div className="city">{regionsData.region}</div>
         <div className="time-cont">
           <FontAwesomeIcon className="time-icon" icon={regionsData.isDay ? "sun" : "moon"} />

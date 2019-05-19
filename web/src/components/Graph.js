@@ -36,6 +36,10 @@ const Graph = (props) => {
         top: 5,
         bottom: 17
       }
+    },
+    tooltips: {
+      enabled: false,
+      mode: "nearest",
     }
   };
 

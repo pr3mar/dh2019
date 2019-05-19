@@ -7,8 +7,10 @@ import {
   Markers,
   Marker,
 } from "react-simple-maps"
-import { scaleLinear } from "d3-scale"
-import request from "axios"
+//import { scaleLinear } from "d3-scale"
+//import request from "axios"
+
+import { appData } from '../assets/data.js';
 
 const wrapperStyles = {
   width: "100%",
@@ -16,24 +18,24 @@ const wrapperStyles = {
   margin: "0 auto",
 }
 
-const cityScale = scaleLinear()
+/*const cityScale = scaleLinear()
   .domain([0,37843000])
-  .range([1,25])
+  .range([1,25])*/
 
 class BasicMap extends Component {
   constructor() {
     super()
     this.state = {
-      cities: [],
+      //cities: [],
     }
-    this.fetchCities = this.fetchCities.bind(this)
+    //this.fetchCities = this.fetchCities.bind(this)
   }
 
   componentDidMount() {
-    this.fetchCities()
+    //this.fetchCities()
   }
 
-  fetchCities() {
+  /*fetchCities() {
     request
       .get("/assets/world-most-populous-cities.json")
       .then(res => {
@@ -41,11 +43,22 @@ class BasicMap extends Component {
           cities: res.data,
         })
       })
-  }
+  }*/
 
   onMarkerHover(city) {
-    console.log(city.name);
+    console.log(city.region);
+    if(city.region!==this.props.highlight){
+      this.props.setHighlight(city.region)
+    }
+
   }
+
+  onMarkerOut(city) {
+    if(city.region===this.props.highlight){
+      this.props.setHighlight("")
+    }
+  }
+
   render() {
     return (
       <div style={wrapperStyles}>
@@ -92,14 +105,16 @@ class BasicMap extends Component {
             </Geographies>
             <Markers>
               {
-                this.state.cities.map((city, i) => (
+                appData.map((city, i) => (
                   <Marker key={i} marker={city}>
                     <circle
                       cx={0}
                       cy={0}
-                      r={cityScale(city.population)}
-                      fill="rgba(75,192,192,0.8)"
+                      r={city.pods>=0 ? (Math.log(city.pods+1)*10) : 0}
+                      fill="rgba(75,192,192,0.5)"
                       onMouseOver={() => this.onMarkerHover(city)}
+                      onMouseOut={() => this.onMarkerOut(city)}
+                      className={city.region===this.props.highlight ? "pulse" : ""}
                     />
                   </Marker>
                 ))

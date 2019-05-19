@@ -28,6 +28,12 @@ library.add(
 
 
 class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      highlight: ""
+    }
+  }
 
   getRegions = () => {
     let regions = [];
@@ -35,12 +41,16 @@ class App extends Component {
       for (let i=0; i<appData.length; i++){
         regions.push(
           <Col md="2" key={i}>
-            <RegionStats regionsData={appData[i]} />
+            <RegionStats regionsData={appData[i]} setHighlight={(region) => this.setHighlight(region)} highlight={this.state.highlight} />
           </Col>
         )
       }
     }
     return regions;
+  }
+
+  setHighlight = (region) => {
+    this.setState({highlight: region});
   }
 
   render() {
@@ -54,7 +64,7 @@ class App extends Component {
           </h1>
           <h5>Platform monitoring</h5>
         </div>
-        <BasicMap />
+        <BasicMap setHighlight={(region) => this.setHighlight(region)} highlight={this.state.highlight}/>
         <div id="stats-cont">
           <div id="stats-header">
             <div>Info</div>
