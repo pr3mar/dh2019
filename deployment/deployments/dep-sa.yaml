@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eco-miner-sa
+  labels:
+    app: eco-miner-sa
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: eco-miner-sa
+  template:
+    metadata:
+      labels:
+        app: eco-miner-sa
+    spec:
+      containers:
+      - name: eco-miner-sa
+        image: alpine
+        command: ["/bin/sh"]
+        args: ["-c", "while true; do echo hello; sleep 10;done"]
+      terminationGracePeriodSeconds: 0
+      nodeSelector:
+        kubernetes.io/hostname: node5

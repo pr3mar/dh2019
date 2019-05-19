@@ -9,7 +9,6 @@
 * SSH users
 	* Gregor
 	* Aljaz
-* Label: eco-miner-slo
 * CPU: 4
 * Mem: 31.4GB
 
@@ -19,7 +18,6 @@
 * Provider: Digital Ocean (Marko)
 * SSH users
 	* Gregor
-* Label: eco-miner-ind
 * CPU: 4
 * Mem: 7.8GB
 
@@ -29,7 +27,6 @@
 * Provider GCP (Aljaz)
 * SSH users
 	* Gregor
-* Label: eco-miner-usa
 * CPU: 8
 * Mem: 7GB
 
@@ -40,8 +37,16 @@
 * SSH users
 	* Gregor
 	* Marko
-* Label: eco-miner-jpn
 * CPU: 4
+* Mem: 7.7GB
+
+### South Africa - Cape Town (node5)
+* IP: 40.127.3.207
+* User: dh19
+* Provider: Azure (Marko)
+* SSH users
+    * Gregor
+* CPU: 2
 * Mem: 7.7GB
 
 ### Germany - Frankfurt (node6)
@@ -50,7 +55,6 @@
 * Provider: Alibaba Cloud (Marko)
 * SSH users
 	* Gregor
-* Label: eco-miner-ger
 * CPU: 2
 * Mem: 3.8GB
 
