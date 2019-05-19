@@ -60,6 +60,8 @@ class BasicMap extends Component {
   }
 
   render() {
+    let apiData = this.props.apiData ? this.props.apiData : [];
+
     return (
       <div style={wrapperStyles}>
         <ComposableMap
@@ -105,12 +107,12 @@ class BasicMap extends Component {
             </Geographies>
             <Markers>
               {
-                appData.map((city, i) => (
+                apiData.map((city, i) => (
                   <Marker key={i} marker={city}>
                     <circle
                       cx={0}
                       cy={0}
-                      r={city.pods>=0 ? (Math.log(city.pods+1)*10) : 0}
+                      r={city.actual_pods>=0 ? (Math.log(city.actual_pods+1)*10) : 0}
                       fill="rgba(75,192,192,0.5)"
                       onMouseOver={() => this.onMarkerHover(city)}
                       onMouseOut={() => this.onMarkerOut(city)}

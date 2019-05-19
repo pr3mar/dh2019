@@ -5,20 +5,29 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
 import Graph from './Graph'
 
 class RegionStats extends Component {
-  getPods = (numPods) => {
+  getPods = (actualPods, desiredPods) => {
     let pods = [];
 
-    for (let i=0; i<numPods; i++){
-      pods.push(
-        <div key={i} className="circle">
-        </div>
-      )
+    for (let i=0; i<desiredPods; i++){
+      if (i < actualPods) {
+        pods.push(
+          <div key={i}>
+          </div>
+        )
+      } else {
+        pods.push(
+          <div key={i} className="small-circle">
+          </div>
+        )
+      }
     }
 
     return pods;
   }
 
   onRegionHover(region) {
+    console.log(this.props.apiData)
+
     if(region!==this.props.highlight){
       this.props.setHighlight(region)
     }
@@ -89,7 +98,7 @@ class RegionStats extends Component {
         <Graph data={initialState}/>
 
         <div className="pods">
-          {this.getPods(regionsData.pods)}
+          {this.getPods(regionsData.actual_pods, regionsData.desired_pods)}
         </div>
       </div>
     )
