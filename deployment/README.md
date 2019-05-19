@@ -9,6 +9,7 @@
 * SSH users
 	* Gregor
 	* Aljaz
+* Label: eco-miner-slo
 
 ### India - Bangalore (node2)
 * Host: 159.65.147.255
@@ -16,6 +17,7 @@
 * Provider: Digital Ocean (Marko)
 * SSH users
 	* Gregor
+* Label: eco-miner-ind
 
 ### USA - LA (node3)
 * Host: 35.235.124.21
@@ -23,6 +25,7 @@
 * Provider GCP (Aljaz)
 * SSH users
 	* Gregor
+* Label: eco-miner-usa
 
 ### Japan (node4)
 * IP: 40.74.79.47
@@ -31,6 +34,7 @@
 * SSH users
 	* Gregor
 	* Marko
+* Label: eco-miner-jpn
 
 ### Germany (node6)
 * IP: 47.254.174.143
@@ -38,6 +42,7 @@
 * Provider: Alibaba Cloud (Marko)
 * SSH users
 	* Gregor
+* Label: eco-miner-ger
 
 ### Manager image
 * `https://hub.docker.com/r/as9697/manager`

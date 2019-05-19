@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: eco-miner-lo
+  name: eco-miner-ger
   labels:
-    app: eco-miner-lo
-    nodeName: lo
+    app: eco-miner-ger
+    nodeName: to
 spec:
   replicas: 1
   strategy:
     type: Recreate
   selector:
     matchLabels:
-      app: eco-miner-lo
+      app: eco-miner-ger
   template:
     metadata:
       labels:
-        app: eco-miner-lo
+        app: eco-miner-ger
     spec:
       containers:
-      - name: eco-miner-lo
+      - name: eco-miner-ger
         image: alpine
         command: ["/bin/sh"]
         args: ["-c", "while true; do echo hello; sleep 10;done"]
