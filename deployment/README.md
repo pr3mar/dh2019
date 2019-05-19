@@ -32,9 +32,9 @@
 	* Gregor
 	* Marko
 
-### Brazil - Sao Paolo (node5)
-* IP: 18.228.245.164
-* User: ubuntu
-* Provider: AWS (Marko)
+### Germany (node6)
+* IP: 47.254.174.143
+* User: root
+* Provider: Alibaba Cloud (Marko)
 * SSH users
 	* Gregor
