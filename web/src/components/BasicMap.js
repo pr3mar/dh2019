@@ -10,7 +10,6 @@ import {
 //import { scaleLinear } from "d3-scale"
 //import request from "axios"
 
-import { appData } from '../assets/data.js';
 
 const wrapperStyles = {
   width: "100%",

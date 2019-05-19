@@ -18,10 +18,6 @@ import {
   faClone, faWindowMaximize, faCircle, faSquare
 } from '@fortawesome/free-regular-svg-icons';
 
-import {
-  faBitcoin
-} from '@fortawesome/free-brands-svg-icons';
-
 library.add(
   faMoon, faSun, faClone, faStickyNote, faWindowMaximize, faLeaf, faCircle, faSquare
 );
