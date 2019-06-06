@@ -35,7 +35,7 @@ class LandingPage extends Component {
   }
 
   fetchApiData = () => {
-    axios.get("https://api.over-engineering-best-practices.com")
+    axios.get("http://88.200.23.39")
       .then(response => {
         let apiData = response.data;
         for (let i = 0; i < apiData.length; i++) {
